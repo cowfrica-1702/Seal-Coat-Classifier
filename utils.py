@@ -1,20 +1,18 @@
 import random
-import numpy as np
-import pandas as pd
 from copy import deepcopy as cp
 
+import numpy as np
+import pandas as pd
+import tensorflow as tf
+from imblearn.metrics import specificity_score
+from keras.layers import Dense, Dropout
+from keras.models import Sequential
 from sklearn.decomposition import PCA
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.metrics import classification_report, accuracy_score
+from sklearn.metrics import precision_score, recall_score
 from sklearn.model_selection import GridSearchCV
 from sklearn.preprocessing import LabelEncoder
-from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
-from sklearn.metrics import precision_score, recall_score
-from imblearn.metrics import specificity_score
-
-from keras.models import Sequential
-from keras.layers import Dense, Dropout
-
-import tensorflow as tf
 
 random.seed(1032021)
 np.random.seed(1032021)
@@ -121,6 +119,7 @@ def mlp_kfold(x, y, model, kfold, folder, epochs):
         count += 1
 
     return accuracy
+
 
 def kfold_cross_validation(x, y, forest, svm, xgb, mlp, pca_lda, pca_idx, kfold, mlp_folder):
     count = 1
