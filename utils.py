@@ -122,42 +122,6 @@ def mlp_kfold(x, y, model, kfold, folder, epochs):
 
     return accuracy
 
-
-# def create_df():
-#     arrays = [[i for i in list(models.keys()) for j in range(3 * num_splits)],
-#               (["precision"] * num_splits + ["recall"] * num_splits +
-#                ["f1-score"] * num_splits) * len(models.keys()),
-#               [i for i in range(num_splits)] * 3 * len(models)]
-#     cols = ["AE", "CT", "ECR", "AE & CT", "accuracy", "macro avg", "weighted avg"]
-#     results = pd.DataFrame(index=arrays, columns=cols)
-#     results = results.rename_axis(['model', "evaluation", "num_fold"])
-#
-#     return results
-#
-#
-# def convert_to_df(results, kfold_results):
-#     for key in kfold_results:
-#         for model in kfold_results[f"{key}"]:
-#             for col in kfold_results[f"{key}"][model]:
-#                 for evaluation in ["precision", "recall", "f1-score"]:
-#                     result = kfold_results[f"{key}"][f"{model}"][f"{col}"]
-#                     if col == "accuracy":
-#                         results.loc[(f"{model}", f"{evaluation}"), "accuracy"].iloc[(int(key)) - 1] = result
-#                     else:
-#                         result = result[f"{evaluation}"]
-#
-#                         if evaluation != "support":
-#                             results.loc[(f"{model}", f"{evaluation}"), f"{col}"].iloc[(int(key)) - 1] = result
-#     return results.iloc[:, :-2]
-
-
-# def num_df(df):
-#     for col in df.columns:
-#         df[col] = df[col].astype(float)
-#
-#     return df
-
-
 def kfold_cross_validation(x, y, forest, svm, xgb, mlp, pca_lda, pca_idx, kfold, mlp_folder):
     count = 1
     kfold_results = {}
