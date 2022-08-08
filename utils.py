@@ -194,7 +194,7 @@ def kfold_cross_validation(x, y, forest, svm, xgb, mlp, pca_lda, pca_num_var, kf
         mlp_folder: the folder that saved MLP model
 
     Returns:
-
+    A dictionary containing all the predicted values of the models.
     """
     count = 1
     label_encoder = LabelEncoder()
