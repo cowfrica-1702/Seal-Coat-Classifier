@@ -31,7 +31,7 @@ def general_grid_search(x, y, model, param, kfold):
         kfold: kfold object
 
     Returns:
-    †he best fitted parameters for the model with the provided x and y
+    The best fitted parameters for the model with the provided x and y
     """
     np.random.seed(1032021)
 
@@ -48,7 +48,7 @@ def general_grid_search(x, y, model, param, kfold):
 
 def pca_lda_grid_search(x, y, kfold):
     """
-    Finding the best number of variables for pca-lda
+    Finding the best number of variables for pca-lda applying kfold for evaluation.
     Args:
         x: the input
         y: the target
@@ -84,12 +84,12 @@ def pca_lda_grid_search(x, y, kfold):
         accuracy_outer.append(mean_inner)
 
     accuracy_outer = np.array(accuracy_outer)
-    print(np.argmax(accuracy_outer), accuracy_outer.max())
+    print(np.argmax(accuracy_outer) + 1, accuracy_outer.max())
 
 
 def get_model_name(k):
     """
-    Get the path of the MLP model w.r.t the number of fold in kfold
+    Get the path to save the MLP model w.r.t the number of fold in kfold
     Args:
         k: the number of fold
 
@@ -107,11 +107,11 @@ def mlp_kfold(x, y, model, kfold, folder, epochs):
         y: the target
         model: mlp model
         kfold: kfold object
-        folder: folder to save the model
+        folder: the folder to save the MLP models
         epochs: number of epochs for training the model
 
     Returns:
-    The accuracy scores for each fold in kfold.
+    The accuracy scores of MLP model for each fold in kfold.
     """
     count = 1
     accuracy = []
@@ -192,7 +192,6 @@ def kfold_cross_validation(x, y, forest, svm, xgb, mlp, pca_lda, pca_num_var, kf
         pca_num_var: the number of variables are kept for PCA-LDA
         kfold: kfold object
         mlp_folder: the folder that saved MLP model
-
     Returns:
     A dictionary containing all the predicted values of the models.
     """
@@ -260,19 +259,20 @@ def kfold_cross_validation(x, y, forest, svm, xgb, mlp, pca_lda, pca_num_var, kf
 def visualize_results(evaluation, y):
     """
     The nice formatted Dataframe that visualizes the returned values from the kfold_cross_validation()
-    function. The dataframe includes the evaluation in Specificity, Sensitivity, and Precision.
+    function. The dataframe includes the evaluation of the models in Specificity, Sensitivity, and
+    Precision.
     Args:
         evaluation: the returned value from kfold_cross_validation() function
         y: the target prediction
 
     Returns:
-    The Dataframe that includes the evaluation of every model in in Specificity,
+    The Dataframe that includes the evaluation of the models in in Specificity,
     Sensitivity, and Precision.
     """
     models = {'pca_lda': [], "svm": [], "forest": [], "xgb": [], 'mlp': []}
-
     metrics = ["specificity", "sensitivity", "precision"]
     multi_index = []
+
     for model in models.keys():
         for metric in metrics:
             multi_index.append((model, metric))
