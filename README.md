@@ -14,13 +14,17 @@ cd Seal-Coat-Classifier
 pip install -r requirements.txt  # install
 ```
 
-### Files 
-- Dataset: data
-- Saved models for MLP: mlp_model
-- EDA: eda.ipynb
-- Training: train.ipynb
-- Inference: infer.ipynb
-- Utils: utils.py
+### Files
+| File | Description | 
+| :---: | :---: |
+| data/ | Dataset |
+| mlp_model/ | Saved models for MLP |
+| eda.ipynb | EDA |
+| train.ipynb | Training |
+| infer.ipynb | Inference |
+| utils.py | Utils |
+
+
 
 
 
