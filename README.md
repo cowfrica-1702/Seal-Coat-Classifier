@@ -1,4 +1,4 @@
-## Code for "Applying Machine Learning Methods to Aid Local Watershed Protection
+## Code and Data for "Applying Machine Learning Methods to Aid Local Watershed Protection
 
 The code and data in this repository were used to create tables and figures in the result section of "Applying Machine Learning Methods to Aid Local Watershed Protection"
 
